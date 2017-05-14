@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block title %}Contact{% endblock %}
+{% block home_active %}{% endblock %}
+{% block contact_active %}active{% endblock %}
+{% block extra_style %}
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/material-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Hero-Technology.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Hero-Food.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Material-Card.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Pretty-Header.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Mockup-MacBook-Pro.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles-new.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="jumbotron hero-food">
+        <h1 class="hero-title">Contact Us</h1>
+        <p class="hero-subtitle">You're Always Welcomed.</p>
+        <p></p>
+    </div>
+    <div class="container-fluid welcome" id="why">
+        <div class="row">
+            <div class="col-md-4" id="learn"><i class="material-icons" id="book">mail_outline</i>
+                <h1><strong>E-mail</strong></h1>
+                <p class="para">admin@yahoo.com </p>
+            </div>
+            <div class="col-md-4"><i class="fa fa-location-arrow" id="address"></i>
+                <h1><strong>Address</strong></h1>
+                <p class="para">14 Sesame Street</p>
+            </div>
+            <div class="col-md-4"><i class="fa fa-phone" id="phone"></i>
+                <h1><strong>Phone</strong></h1>
+                <p class="para">0156497894</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

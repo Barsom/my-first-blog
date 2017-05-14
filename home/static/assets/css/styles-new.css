@@ -1,0 +1,43 @@
+#logo{
+  max-width:50px;
+  margin-top:-3px;
+  margin-right:10px;
+  display:inline-block;
+}
+
+i#login.glyphicon.glyphicon-log-in{
+  margin-right:10px;
+}
+
+body{
+  margin-top:65px;
+}
+.welcome{
+
+  text-align:center;
+}
+
+#book{
+  font-size:60px;
+  color:rgb(225,90,110);
+}
+
+#address{
+  font-size:60px;
+  color:rgb(83,146,154);
+}
+
+#phone{
+  font-size:60px;
+  color:rgb(123,113,134);
+}
+
+div#why.container-fluid.welcome{
+  padding-top:60px;
+}
+
+.para{
+  font-size:21px;
+  margin-top:26px;
+}
+

@@ -1,0 +1,50 @@
+{% extends 'profile.html' %}
+{% load staticfiles %}
+{% block title %}Lectures{% endblock %}
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/profile-style1.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/profile-style2.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/search.css' %}" />
+{% endblock %}
+{% block profile_content %}
+    {% if lec_error %}
+        <br><h2 style="margin-left:30px">{{ lec_error }}</h2>
+    {% else %}
+        {% if lecture_list %}
+            <form class="navbar-form" role="search" method="get" action="{% url 'lectures' lec_id %}">
+              <div class="input-group add-on" style="width: 115%;margin-left: -8px;">
+                <input class="form-control" placeholder="Search" name="q" id="search-box" type="text">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+              </div>
+            </form><br>
+            <table class="table table-striped">
+               <thead>
+                  <tr>
+                     <th>Lecture Title</th>
+                     <th>Description</th>
+                     <th>Download</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {% for lecture in lecture_list %}
+                  <tr>
+                     <td>{{ lecture.title }}</td>
+                     <td>{{ lecture.description }}</td>
+                     <td>
+                        <a href="{{ lecture.file.url }}">Download</a>
+                     </td>
+                  </tr>
+                  {% endfor %}
+               </tbody>
+            </table>
+        {% elif subjects %}
+            {% for subject in subjects %}
+                <br><h3 style="margin-left:30px"><a href="{{ forloop.counter }}">{{ subject }}</a></h3>
+            {% endfor %}
+        {% else %}
+            <br><h2 style="margin-left:30px">Lectures not found.</h2>
+        {% endif %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block home_active %}{% endblock %}
+{% block profile_active %}active{% endblock %}
+{% block title %}Manage Grades{% endblock %}
+{% block content %}
+    {% if error %}
+        <br><h1 style="margin-left:30px">{{ error }}</h1>
+    {% else %}
+        <br><h3 style="margin-left:30px">Manage Grades</h3>
+        {% if students %}
+            <form role="form" action="{% url 'save_grades' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+                {% for student in students %}
+                    {% for student_id in student_ids %}
+                        {% if forloop.counter == forloop.parentloop.counter %}
+                            <br><h3 style="margin-left:30px">{{ student }}</h3>
+                            {% for subject in subjects %}
+                                <h4 style="margin-left:50px">{{ subject }}</h4>
+                                <div style="margin-left:70px">
+                                    <input class="form-control" style="width:15%" type="text" placeholder="{{ subject }} Midterm" name="{{ student_id }}_{{ subject }}mid"><br>
+                                    <input class="form-control" style="width:15%" type="text" placeholder="{{ subject }} Final" name="{{ student_id }}_{{ subject }}final"><br>
+                                    <input class="form-control" style="width:15%" type="text" placeholder="{{ subject }} Practical" name="{{ student_id }}_{{ subject }}practical"><br>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                <input type="hidden" name="class_id" value="{{ class_id }}" />
+                <br><button style="margin-left:20px;width:80px;font-family: 'Raleway','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight: bold;" type="submit">Save</button><br><br>
+            </form>
+            {% else %}
+            <table class="table table-striped">
+               <thead>
+                  <tr>
+                     <th>Classrooms</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {% for classroom in classrooms %}
+                  <tr>
+                     <td><a href="{{ forloop.counter }}">{{ classroom }}</a></td>
+                  </tr>
+                  {% endfor %}
+               </tbody>
+            </table>
+        {% endif %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'profile.html' %}
+{% block title %}Grades{% endblock %}
+{% block profile_content %}
+    <table class="table table-striped">
+       <thead>
+          <tr>
+             <th>Subjects</th>
+             <th>Midterm (/100)</th>
+             <th>Final (/100)</th>
+             <th>Practical (/100)</th>
+             <th>Total (/100)</th>
+          </tr>
+       </thead>
+       <tbody>
+           {% for s in subjects %}
+               {% for m in midterm %}
+                   {% if forloop.counter == forloop.parentloop.counter %}
+                       {% for f in final %}
+                           {% if forloop.counter == forloop.parentloop.counter %}
+                               {% for p in practical %}
+                                   {% if forloop.counter == forloop.parentloop.counter %}
+                                       {% for t in total %}
+                                           {% if forloop.counter == forloop.parentloop.counter %}
+                                               <tr>
+                                                   <td>{{ s }}</td>
+                                                   <td>{{ m }}</td>
+                                                   <td>{{ f }}</td>
+                                                   <td>{{ p }}</td>
+                                                   <td>{{ t }}</td>
+                                               </tr>
+                                           {% endif %}
+                                       {% endfor %}
+                                   {% endif %}
+                               {% endfor %}
+                           {% endif %}
+                       {% endfor %}
+                   {% endif %}
+               {% endfor %}
+           {% endfor %}
+       </tbody>
+    </table>
+{% endblock %}

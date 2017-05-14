@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/Google-Style-Login.css' %}" />
+{% endblock %}
+{% block title %}Login{% endblock %}
+{% block home_active %}{% endblock %}
+{% block log_active %}active{% endblock %}
+
+{% block content %}
+    <br><br>
+    <div class="login-card"><img src="{% static 'assets/img/avatar_2x.png' %}" class="profile-img-card">
+        <p class="profile-name-card"> </p>
+        <form class="form-signin" role="form" action="{% url 'login_now' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <span class="reauth-email"> </span>
+            {% if error_message %}
+            <p style='color:red;'><strong>{{ error_message }}</strong></p>
+            {% endif %}
+            <input class="form-control" type="text" required="" placeholder="ID" autofocus="" id="inputEmail" name="username">
+            <input class="form-control" type="password" required="" placeholder="Password" id="inputPassword" name="password">
+            <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Login</button>
+        </form>
+    </div>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cloud School{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Pretty-Footer.css' %}">
+    {% block extra_style %}{% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand navbar-link" href="/"><img src="{% static 'assets/img/07.png' %}" id="logo"><strong>Cloud School</strong></a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="{% block home_active %}active{% endblock %}" role="presentation"><a href="/">Home</a></li>
+                    <li class="{% block contact_active %}{% endblock %}" role="presentation"><a href="{% url 'contact' %}">Contact</a></li>
+                    <li class="{% block gallery_active %}{% endblock %}" role="presentation"><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li class="{% block payments_active %}{% endblock %}" role="presentation"><a href="{% url 'payments' %}">Payments</a></li>
+                </ul>
+                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if not request.user.is_authenticated %}
+                    <li class="{% block log_active %}{% endblock %}" role="presentation"><a href="{% url 'login_page' %}"><i class="glyphicon glyphicon-log-in" id="login"></i>Login</a></li>
+                    {% else %}
+                    <li class="{% block profile_active %}{% endblock %}" role="presentation"><a href="{% url 'profile' %}">Profile </a></li>
+                    <li role="presentation"><a href="{% url 'logout_now' %}"><i class="glyphicon glyphicon-log-out" id="login"></i>Logout</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+    <div class="carousel slide" data-ride="carousel" id="carousel-1">
+        <div class="carousel-inner" role="listbox">
+            <div class="item"><img src="{% static 'assets/img/Negro f.jpg' %}" alt="Slide Image" id="isa"></div>
+            <div class="item"><img src="{% static 'assets/img/KIDs f.jpg' %}" alt="Slide Image" id="isa2"></div>
+            <div class="item"><img src="{% static 'assets/img/KIDS 2.jpg' %}" alt="Slide Image" id="isa3"></div>
+            <div class="item active"><img src="{% static 'assets/img/KIDs 3.jpg' %}" alt="Slide Image" id="isa4"></div>
+        </div>
+        <div><a class="left carousel-control" href="#carousel-1" role="button" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i><span class="sr-only">Previous</span></a>
+            <a class="right carousel-control" href="#carousel-1" role="button" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i><span class="sr-only">Next</span></a>
+        </div>
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-1" data-slide-to="0"></li>
+            <li data-target="#carousel-1" data-slide-to="1"></li>
+            <li data-target="#carousel-1" data-slide-to="2"></li>
+            <li data-target="#carousel-1" data-slide-to="3" class="active"></li>
+        </ol>
+    </div>
+    <div class="container welcome" id="welcome">
+        <h1><strong>Welcome to our School</strong></h1>
+        <p></p>
+    </div>
+    <div class="container welcome" id="why">
+        <h1>What is our School</h1><br>
+        <div class="row">
+            <div class="col-md-4" id="learn"><i class="fa fa-book" id="book"></i>
+                <h1>Learn </h1>
+                <p></p>
+            </div>
+            <div class="col-md-4"><i class="glyphicon glyphicon-education" id="education"></i>
+                <h1>Educate</h1>
+                <p></p>
+            </div>
+            <div class="col-md-4"><i class="fa fa-cloud" id="cloud"></i>
+                <h1>Cloud based</h1>
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="row">
+            <div class="col-md-6 col-sm-6 footer-navigation">
+                <h3><a href="#">Cloud School</a></h3>
+                <p class="links"><a href="/">Home</a>
+                    <strong> · </strong>
+                    <a href="{% url 'contact' %}">Contact </a>
+                    <strong> · </strong>
+                    <a href="{% url 'gallery' %}">Gallery </a>
+                </p>
+            </div>
+            <div class="col-lg-6 col-lg-offset-0 col-md-6 col-sm-6 footer-contacts">
+                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                    <p><span class="new-line-span">21 Revolution Street</span> Helwan,Egypt</p>
+                </div>
+                <div><i class="fa fa-phone footer-contacts-icon"></i>
+                    <p class="footer-center-info email text-left"> +1 555 123456</p>
+                </div>
+                <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                    <p> <a href="mailto:admin@yahoo.com">admin@yahoo.com</a></p>
+                </div>
+            </div>
+            <div class="clearfix visible-sm-block"></div>
+        </div>
+        {% endblock %}
+    </footer>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

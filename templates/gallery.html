@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block title %}Gallery{% endblock %}
+{% block home_active %}{% endblock %}
+{% block gallery_active %}active{% endblock %}
+{% block extra_style %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css">
+{% endblock %}
+{% block content %}
+    <div class="container welcome" id="welcome">
+        <h1><strong>Gallery</strong></h1><br>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="thumbnail">
+                    <a href="{% static 'assets/img/07.jpg' %}" target="_blank" data-lightbox="edu"><img class="img-responsive" src="{% static 'assets/img/07.jpg' %}"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="thumbnail">
+                    <a href="{% static 'assets/img/Classroom.jpg' %}" target="_blank" data-lightbox="edu"><img class="img-responsive" src="{% static 'assets/img/Classroom.jpg' %}"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="thumbnail">
+                    <a href="{% static 'assets/img/e01db799305850ad96826ecc19b524bd.jpg' %}" target="_blank" data-lightbox="edu"><img class="img-responsive" src="{% static 'assets/img/e01db799305850ad96826ecc19b524bd.jpg' %}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="thumbnail">
+                    <a href="{% static 'assets/img/Negro.jpg' %}" target="_blank" data-lightbox="edu"><img class="img-responsive" src="{% static 'assets/img/Negro.jpg' %}"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="thumbnail">
+                    <a href="{% static 'assets/img/ensure_success_in_the_classroom_for_kids_on_the_autism_spectrum.jpg' %}" target="_blank" data-lightbox="edu"><img class="img-responsive" src="{% static 'assets/img/ensure_success_in_the_classroom_for_kids_on_the_autism_spectrum.jpg' %}"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="thumbnail">
+                    <a href="{% static 'assets/img/e01db799305850ad96826ecc19b524bd.jpg' %}" target="_blank" data-lightbox="edu"><img class="img-responsive" src="{% static 'assets/img/e01db799305850ad96826ecc19b524bd.jpg' %}" data-lightbox="edu"></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="thumbnail">
+                    <a href="{% static 'assets/img/07.jpg' %}" target="_blank" data-lightbox="edu"><img class="img-responsive" src="{% static 'assets/img/07.jpg' %}"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="thumbnail">
+                    <a href="{% static 'assets/img/Classroom.jpg' %}" target="_blank" data-lightbox="edu"><img class="img-responsive' %}" src="{% static 'assets/img/Classroom.jpg' %}" data-lightbox="edu"></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="thumbnail">
+                    <a href="{% static 'assets/img/e01db799305850ad96826ecc19b524bd.jpg' %}" target="_blank" data-lightbox="edu"><img class="img-responsive" src="{% static 'assets/img/e01db799305850ad96826ecc19b524bd.jpg' %}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>
+{% endblock %}

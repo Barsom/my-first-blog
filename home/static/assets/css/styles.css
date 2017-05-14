@@ -1,0 +1,74 @@
+carousel-1.carousel.slide{
+}
+
+.welcome{
+  text-align:center;
+  padding:20px;
+}
+
+#logo{
+  max-height:50px;
+  margin-right:10px;
+  margin-top:-3px;
+  display:inline-block;
+}
+
+body{
+  margin-top:65px;
+}
+
+#isa{
+  width:100%;
+}
+
+#isa2{
+  width:100%;
+}
+
+im#isa3{
+}
+
+#isa3{
+  width:100%;
+}
+
+#isa4{
+  width:100%;
+}
+
+#welcome p{
+  font-size:28px;
+  margin-top:50PX;
+  margin-bottom:100px;
+}
+
+#book{
+  font-size:60px;
+  color:rgb(229,105,123);
+}
+
+i#education{
+  font-size:60px;
+  color:rgb(123,112,134);
+}
+
+#cloud{
+  font-size:60px;
+  color:rgb(83,146,154);
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+  font-family:"Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:normal;
+  line-height:1.1;
+  color:inherit;
+}
+
+#learn{
+  border-top-color:rgb(229,105,123);
+}
+
+#login{
+  padding-right:10px;
+}
+

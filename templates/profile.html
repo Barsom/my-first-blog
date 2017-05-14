@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block title %}Profile{% endblock %}
+{% block home_active %}{% endblock %}
+{% block profile_active %}active{% endblock %}
+{% block extra_style %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/profile-style1.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/profile-style2.css' %}" />
+{% endblock %}
+{% block content %}
+{% if error %}
+<br><h1 style="margin-left:30px">{{ error }}</h1>
+{% else %}
+{% if request.user.is_authenticated %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col1">
+                {% if teacher %}<h1 id="hName">{{ teacher.name }}</h1>{% endif %}
+                <h1 id="hName">{{ student.name }}</h1>
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand navbar-link" href="#"> </a>
+                            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navcol-2">
+                            <ul class="nav navbar-nav" id="ganb">
+                            {% if not teacher %}
+                                {% if not parent %}
+                                <li role="presentation" class="it"><a href="{% url 'lectures' %}" class="item">Lectures</a></li>
+                                <li role="presentation" class="it"><a href="{% url 'assignments' %}" class="item">Assignments</a></li>
+                                {% endif %}
+                                <li role="presentation"><a href="{% url 'attendance' %}{% if parent %}{{ student.pk }}{% endif %}" class="item">Attendance</a></li>
+                                <li role="presentation"><a href="{% url 'grades' %}{% if parent %}{{ student.pk }}{% endif %}" class="item">Grades </a></li>
+                            {% else %}
+                                <li role="presentation" class="it"><a href="{% url 'manage_attendance' %}" class="item">Manage Attendance</a></li>
+                                <li role="presentation" class="it"><a href="{% url 'manage_grades' %}" class="item">Manage Grades</a></li>
+                                <li role="presentation" class="it"><a href="/admin/home/lecture/" class="item">Upload Lectures</a></li>
+                                <li role="presentation" class="it"><a href="/admin/home/assignment/" class="item">Submit Assignments</a></li>
+                                <li role="presentation" class="it"><a href="{% url 'view_assignments' %}" class="item">View Assignments</a></li>
+                            {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-12 col-sm-offset-4 col-xs-12 col-xs-offset-4">
+                {% block profile_content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+{%  else %}
+<div class="col-sm-12">
+    You're not logged in yet. <a href="{% url 'login_page' %}" style='color:blue;'>Click here</a> to login.
+ </div>
+{% endif %}
+{% endif %}
+{% endblock %}

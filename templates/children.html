@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block title %}Children{% endblock %}
+{% block home_active %}{% endblock %}
+{% block profile_active %}active{% endblock %}
+{% block content %}
+{% if error %}
+<br><h1 style="margin-left:30px">{{ error }}</h1>
+{% else %}
+<br><h1 style="margin-left:30px">your children are waiting for your supervision:</h1><br>
+    {% for child in children %}
+        <h2 style="margin-left:60px"><a href="{{ child.pk }}">{{ child.name }}</a></h2><br>
+    {% endfor %}
+{% endif %}
+{% endblock %}

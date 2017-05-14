@@ -1,0 +1,22 @@
+div.jumbotron.hero-food{
+  color:#fff;
+  text-align:center;
+  background:url('../../assets/img/Negro.jpg');
+  background-size:cover;
+  background-position:center;
+  padding-top:100px;
+  padding-bottom:100px;
+  opacity:0.75;
+}
+
+h1.hero-title, h2.hero-title, h3.hero-title{
+  text-shadow:0 3px 3px rgba(0,0,0,0.4);
+  color:#fff;
+}
+
+p.hero-subtitle{
+  max-width:600px;
+  margin:25px auto;
+  color:#fff;
+}
+

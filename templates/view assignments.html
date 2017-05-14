@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% block home_active %}{% endblock %}
+{% block profile_active %}active{% endblock %}
+{% block title %}View Assignments{% endblock %}
+{% block content %}
+    {% if error %}
+        <br><h1 style="margin-left:30px">{{ error }}</h1>
+    {% else %}
+        {% if classrooms %}
+            <table class="table table-striped">
+               <thead>
+                  <tr>
+                     <th>Classrooms</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {% for classroom in classrooms %}
+                      {% for id in classroom_ids %}
+                          {% if forloop.counter == forloop.parentloop.counter %}
+                              <tr>
+                                 <td><a href="{{ id }}">{{ classroom }}</a></td>
+                              </tr>
+                          {% endif %}
+                      {% endfor %}
+                  {% endfor %}
+               </tbody>
+            </table>
+        {% elif assignment_list %}
+            <table class="table table-striped">
+               <thead>
+                  <tr>
+                     <th>Assignments</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {% for assignment in assignment_list %}
+                  <tr>
+                     <td><a href="{{ assignment.link }}" target="_blank">{{ assignment }}</a></td>
+                  </tr>
+                  {% endfor %}
+               </tbody>
+            </table>
+        {% else %}
+            <table class="table table-striped">
+               <thead>
+                  <tr>
+                     <th>Students</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {% for student in students %}
+                      {% for id in student_ids %}
+                          {% if forloop.counter == forloop.parentloop.counter %}
+                              <tr>
+                                 <td><a href="{{ class_id }}/{{ id }}">{{ student }}</a></td>
+                              </tr>
+                          {% endif %}
+                      {% endfor %}
+                  {% endfor %}
+               </tbody>
+            </table>
+        {% endif %}
+    {% endif %}
+{% endblock %}
