@@ -69,7 +69,7 @@ class Lecture(models.Model):
                                default=None, null=True, blank=True)
     description = models.CharField(max_length=1000, default=None)
     file = models.FileField(upload_to='./lectures/', default=None)
-    classroom = models.ForeignKey(Classroom, on_delete=models.DO_NOTHING)
+    classroom = models.ManyToManyField(Classroom, blank=True, default=None)
 
     def __str__(self):
         return self.title
@@ -85,7 +85,7 @@ class Assignment(models.Model):
                                         ('Chemistry', 'Chemistry')),
                                default=None, null=True, blank=True)
     file = models.FileField(upload_to='./assignments/', default=None)
-    classroom = models.ForeignKey(Classroom, on_delete=models.DO_NOTHING)
+    classroom = models.ManyToManyField(Classroom, blank=True, default=None)
 
     def __str__(self):
         return self.title

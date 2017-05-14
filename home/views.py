@@ -349,8 +349,11 @@ def assignments_solve(request, task_id):
     if not find_student(request.user.username):
         return redirect('/profile/')
     elif task_id is not None:
-        assignment = Assignment.objects.get(pk=task_id)
         student = Student.objects.get(pk=find_student(request.user.username))
+        try:
+            assignment = Assignment.objects.get(pk=task_id)
+        except:
+            return render(request, "assignments.html", {'task_error': 'Assignment not found.', 'student': student})
         assignment_list = Assignment.objects.filter(classroom=student.classroom)
         if assignment in assignment_list:
             if verify_assignment(student, assignment):
