@@ -166,7 +166,10 @@ def manage_grades(request, class_id):
         if class_id is None:
             return render(request, "manage grades.html", {'classrooms': classrooms})
         else:
-            classroom = classrooms[int(class_id)-1]
+            try:
+                classroom = classrooms[int(class_id)-1]
+            except:
+                return render(request, "manage grades.html", {'error': "You're not allowed to access this page."})
             subjects = get_subjects(teacher, classroom)
             try:
                 students = classroom.student_set.all()
