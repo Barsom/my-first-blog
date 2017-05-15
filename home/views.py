@@ -241,6 +241,8 @@ def view_assignments(request, class_id, student_id):
     from .models import Student, Teacher, Classroom, Solved_Assignment
     if not request.user.is_authenticated:
         return redirect('/login/')
+    if request.user.is_superuser: #admin
+        return render(request, "profile.html", {'error': "you're not allowed to access this page."})
     if request.user.is_staff:
         teacher = Teacher.objects.get(pk=find_teacher(request.user.username))
         classrooms = get_classrooms(teacher)
@@ -283,6 +285,8 @@ def view_assignments(request, class_id, student_id):
             return render(request, "view assignments.html", {'students': students,
                                                              'student_ids': student_ids,
                                                              'class_id': class_id})
+    else:
+        return render(request, "profile.html", {'error': "you're not allowed to access this page."})
 
 
 # get classrooms that belongs to this teacher
