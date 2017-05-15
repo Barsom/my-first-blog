@@ -31,6 +31,8 @@ def attendance(request, child_id):
     from .models import Student, Attendance, Parent
     if not request.user.is_authenticated:
         return redirect('/login/')
+    if find_teacher(request.user.username) or request.user.is_superuser:
+        return render(request, "profile.html", {'error': "you're not allowed to access attendance page."})
     if find_student(request.user.username):  # student
         parent = False
         student = Student.objects.get(pk=find_student(request.user.username))
