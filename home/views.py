@@ -144,6 +144,8 @@ def save_attendance(request):
     from .models import Teacher, Attendance
     if not request.user.is_authenticated:
         return redirect('/login/')
+    if request.user.is_superuser: #admin
+        return render(request, "profile.html", {'error': "you're not allowed to access this page."})
     if not request.user.is_staff:
         return redirect('/profile/')
     else:
@@ -200,6 +202,8 @@ def save_grades(request):
     from .models import Teacher, Grade
     if not request.user.is_authenticated:
         return redirect('/login/')
+    if request.user.is_superuser: #admin
+        return render(request, "profile.html", {'error': "you're not allowed to access this page."})
     if not request.user.is_staff:
         return redirect('/profile/')
     else:
