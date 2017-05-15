@@ -30,12 +30,14 @@
                <thead>
                   <tr>
                      <th>Assignments</th>
+                     <th>Subjects</th>
                   </tr>
                </thead>
                <tbody>
                   {% for assignment in assignment_list %}
                   <tr>
                      <td><a href="{{ assignment.link }}" target="_blank">{{ assignment }}</a></td>
+                     <td>{{ assignment.assignment.subject }}</td>
                   </tr>
                   {% endfor %}
                </tbody>
