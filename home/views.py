@@ -118,7 +118,9 @@ def manage_attendance(request, class_id):
     from .models import Teacher
     if not request.user.is_authenticated:
         return redirect('/login/')
-    if request.user.is_staff:
+    if request.user.is_superuser: #admin
+        return render(request, "profile.html", {'error': "you're not allowed to access this page."})
+    if request.user.is_staff: # teacher
         teacher = Teacher.objects.get(pk=find_teacher(request.user.username))
         classrooms = get_classrooms(teacher)
         if class_id is None:
@@ -134,6 +136,8 @@ def manage_attendance(request, class_id):
             return render(request, "manage attendance.html", {'students': students,
                                                               'student_ids': student_ids,
                                                               'class_id': class_id})
+    else: # student or parent
+        return render(request, "profile.html", {'error': "you're not allowed to access this page."})
 
 
 def save_attendance(request):
