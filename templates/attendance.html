@@ -1,6 +1,11 @@
 {% extends 'profile.html' %}
 {% block title %}Attendance{% endblock %}
+{% block home_active %}{% endblock %}
+{% block profile_active %}active{% endblock %}
 {% block profile_content %}
+{% if error %}
+    <br><h1 style="margin-left:30px">{{ error }}</h1>
+{% else %}
     <table class="table table-striped">
        <thead>
           <tr>
@@ -27,4 +32,5 @@
           {% endfor %}
        </tbody>
     </table>
+{% endif %}
 {% endblock %}
